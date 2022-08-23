@@ -3,10 +3,9 @@ import express from "express";
 import { CreatePostgressConnection } from "./database";
 
 const app = express();
-const port = 3000;
 
-app.listen(port, async () => {
-  console.log(`rodando na porta ${port}`);
+app.listen(process.env.PORT || 3000, async () => {
+  console.log(`rodando na porta ${process.env.PORT || 3000}`);
 
   const connection = new CreatePostgressConnection();
 
