@@ -9,4 +9,6 @@ Repositorio para o estudo basico de banco sql (Postgres rodando via docker com a
 
 - POSTGRES_USER (usuario do postgres que vai rodar no docker)
 
-- POSTGRES_DB_NAME=toinDatabase (nome do postgres que vai rodar no docker)
+- POSTGRES_DB_NAME (nome do postgres que vai rodar no docker)
+
+- DATABASE_URL (url de conexão do seu banco de dados)
