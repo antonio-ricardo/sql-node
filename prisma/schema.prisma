@@ -14,11 +14,14 @@ enum TransactionType {
 }
 
 model User {
-  id                    Int           @id @default(autoincrement())
-  email                 String        @unique
-  name                  String
-  userTransactions      Transaction[] @relation("user")
-  transactionsToReceive Transaction[] @relation("receiver")
+  id               Int           @id @default(autoincrement())
+  email            String        @unique
+  name             String
+  balance          Int           @default(0)
+  userTransactions Transaction[] @relation("user")
+  transfers        Transaction[] @relation("receiver")
+  created_at       DateTime      @default(now())
+  updated_at       DateTime      @default(now())
 
   @@map("Users")
 }
@@ -30,6 +33,8 @@ model Transaction {
   userId     Int
   receiver   User?           @relation("receiver", fields: [receiverId], references: [id])
   receiverId Int?
+  created_at DateTime        @default(now())
+  updated_at DateTime        @default(now())
 
   @@map("Transactions")
 }
