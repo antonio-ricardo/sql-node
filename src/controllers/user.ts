@@ -6,7 +6,7 @@ import userService from "../services/user";
 
 export default {
   async createUser(req: BaseRequest<createUserDto>, res: Response) {
-    const createdUser = await userService.createUserService(req);
+    const createdUser = await userService.createUserService(req.body);
 
     const { body, status } = SuccessResponse.create(createdUser);
 
