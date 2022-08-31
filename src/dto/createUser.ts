@@ -1,8 +1,13 @@
-import { object, string } from "yup";
+import { object, string } from 'yup';
 
 const createUserSchema = object({
-  name: string().required(),
-  email: string().required(),
+  body: object({
+    name: string().required(),
+    email: string().required(),
+  }),
+  query: object({
+    batata: string().required(),
+  }),
 });
 
 interface UserData {

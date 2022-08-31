@@ -1,4 +1,4 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from 'express';
 
 export const validateRequest = (
   req: any,
@@ -6,15 +6,6 @@ export const validateRequest = (
   next: NextFunction,
   dto: any
 ) => {
-  req.body = {
-    ...req.body,
-    ...req.headers,
-    ...req.params,
-    ...req.query,
-  };
-
-  const validateBody = dto.validate(req.body);
-  req.body = validateBody;
-
+  dto.validate(req);
   next();
 };
