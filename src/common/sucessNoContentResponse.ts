@@ -1,9 +1,9 @@
 import { BaseResponse } from "./baseResponse";
 
 export class SuccessNoContentResponse {
-  static create(body: unknown): BaseResponse {
+  static create(): BaseResponse {
     return {
-      body,
+      body: { message: "success" },
       status: 204,
     };
   }

@@ -10,7 +10,7 @@ interface UserData {
   email: string;
 }
 
-export class createUserDto {
+export class CreateUserDto {
   constructor(public name: string, public email: string) {}
 
   static validate(data: Partial<UserData>) {
@@ -18,6 +18,6 @@ export class createUserDto {
       .camelCase()
       .validateSync(data, { stripUnknown: true });
 
-    return new createUserDto(name, email);
+    return new CreateUserDto(name, email);
   }
 }
