@@ -27,6 +27,9 @@ routes.delete(
   (req, res, next) => {
     validateRequest(req, res, next, BaseUserDto);
   },
+    (req, res, next) => {
+    validateToken(req, res, next)
+  },
   userControllers.deleteUser
 );
 
