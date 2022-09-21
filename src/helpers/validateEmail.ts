@@ -1,9 +1,9 @@
-import { UnathorizedError } from "../common/errors/unathorized"
+import { UnauthorizedError } from "../common/errors/unauthorized"
 
 export const validateEmail = (sentEmail: string, tokenEmail?: string) => {
     if (tokenEmail === sentEmail) {
         return
     }
 
-    throw new UnathorizedError('Invalid token')
+    throw new UnauthorizedError('Invalid token')
 }
