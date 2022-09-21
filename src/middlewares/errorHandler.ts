@@ -28,7 +28,7 @@ const getErrorResponse = (err: Error) => {
       return { message: err.message, status: 404 };
     case "BadRequestError":
       return { message: err.message, status: 400 };
-    case "UnatorizedError":
+    case "UnathorizedError":
       return { message: err.message, status: 401 };
     default:
       return { message: err.message, status: 500 };
