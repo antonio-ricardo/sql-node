@@ -7,8 +7,10 @@ import {
   deleteUserService,
   updateUserService,
   getUserService,
+  userLoginService,
 } from "../services";
-import { BaseUserDto, CreateUserDto } from "../dto";
+import { BaseUserDto, CreateUserDto, LogUserDto, UpdateUserDto } from "../dto";
+import { validateEmail } from "../helpers/validateEmail";
 
 export default {
   async createUser(req: BaseRequest<CreateUserDto>, res: Response) {
@@ -28,6 +30,8 @@ export default {
   },
 
   async deleteUser(req: BaseRequest<BaseUserDto>, res: Response) {
+    validateEmail(req.body.email, req.locals?.email);
+    
     await deleteUserService(req.body);
 
     const { body, status } = SuccessNoContentResponse.create();
@@ -35,10 +39,18 @@ export default {
     return res.status(status).json(body);
   },
 
-  async updateUser(req: BaseRequest<CreateUserDto>, res: Response) {
+  async updateUser(req: BaseRequest<UpdateUserDto>, res: Response) {
     const updatedUser = await updateUserService(req.body);
 
     const { body, status } = SuccessResponse.create(updatedUser);
+
+    return res.status(status).json(body);
+  },
+
+  async logUser(req: BaseRequest<LogUserDto>, res: Response) {
+    const token = await userLoginService(req.body);
+
+    const { body, status } = SuccessResponse.create(token);
 
     return res.status(status).json(body);
   },

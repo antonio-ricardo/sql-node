@@ -1,3 +1,4 @@
 export * from "./user/createUser";
 export * from "./user/base";
-export * from "./user/update";
+export * from "./user/updateUser";
+export * from "./user/login";

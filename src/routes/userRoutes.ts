@@ -1,7 +1,8 @@
-import { CreateUserDto, BaseUserDto } from "./../dto";
+import { CreateUserDto, BaseUserDto, UpdateUserDto, LogUserDto } from "./../dto";
 import { Router } from "express";
 import userControllers from "../controllers/user";
 import { validateRequest } from "../middlewares/validateRequest";
+import { validateToken } from "../middlewares/validateToken";
 
 const routes = Router();
 
@@ -32,9 +33,17 @@ routes.delete(
 routes.put(
   "/",
   (req, res, next) => {
-    validateRequest(req, res, next, CreateUserDto);
+    validateRequest(req, res, next, UpdateUserDto);
   },
   userControllers.updateUser
+);
+
+routes.post(
+  "/login",
+  (req, res, next) => {
+    validateRequest(req, res, next, LogUserDto);
+  },
+  userControllers.logUser
 );
 
 export default routes;

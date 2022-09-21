@@ -3,5 +3,6 @@ export interface BaseRequest<T> {
     headers?: Record<string, unknown>
     query?: Record<string, unknown>
     params?: Record<string, unknown>
+    locals?: Record<string, string>
   }
   
