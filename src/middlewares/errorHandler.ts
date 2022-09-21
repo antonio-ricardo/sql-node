@@ -17,7 +17,7 @@ export const errorHandler = (
 
   const { status, message } = getErrorResponse(err);
 
-  return res.status(status).json({message});
+  return res.status(status).json({ message });
 };
 
 const getErrorResponse = (err: Error) => {
@@ -26,6 +26,10 @@ const getErrorResponse = (err: Error) => {
       return { message: err.message, status: 409 };
     case "NotFoundError":
       return { message: err.message, status: 404 };
+    case "BadRequestError":
+      return { message: err.message, status: 400 };
+    case "UnatorizedError":
+      return { message: err.message, status: 401 };
     default:
       return { message: err.message, status: 500 };
   }
