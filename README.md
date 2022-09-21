@@ -1,7 +1,7 @@
 # sql-node
-Repositorio para o estudo basico de banco sql (Postgres rodando via docker com adminer)
+Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Postgres rodando via docker com adminer)
 
-# Variaveis de ambient
+# Variáveis de ambiente
 
 - PORT (Porta onde vai rodar o projeto. padrão: 3000)
 
