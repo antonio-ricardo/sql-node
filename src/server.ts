@@ -3,11 +3,13 @@ import 'express-async-errors';
 import express from 'express';
 import { errorHandler } from './middlewares/errorHandler';
 import userRoutes from './routes/userRoutes';
+import transactionRoutes from './routes/transactionRoutes';
 
 const app = express();
 app.use(express.json());
 
 app.use('/users', userRoutes);
+app.use('/transactions', transactionRoutes);
 
 app.use(errorHandler);
 app.listen(process.env.PORT || 3000, async () => {
