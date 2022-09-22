@@ -1,4 +1,9 @@
-import { CreateUserDto, BaseUserDto, UpdateUserDto, LogUserDto } from "./../dto";
+import {
+  CreateUserDto,
+  BaseUserDto,
+  UpdateUserDto,
+  LogUserDto,
+} from "./../dto";
 import { Router } from "express";
 import userControllers from "../controllers/user";
 import { validateRequest } from "../middlewares/validateRequest";
@@ -25,16 +30,19 @@ routes.get(
 routes.delete(
   "/",
   (req, res, next) => {
-    validateRequest(req, res, next, BaseUserDto);
+    validateToken(req, res, next);
   },
-    (req, res, next) => {
-    validateToken(req, res, next)
+  (req, res, next) => {
+    validateRequest(req, res, next, BaseUserDto);
   },
   userControllers.deleteUser
 );
 
 routes.put(
   "/",
+  (req, res, next) => {
+    validateToken(req, res, next);
+  },
   (req, res, next) => {
     validateRequest(req, res, next, UpdateUserDto);
   },

@@ -11,6 +11,7 @@ export const validateRequest = (
     ...req.headers,
     ...req.params,
     ...req.query,
+    ...res.locals,
   };
 
   const validateBody = dto.validate(req.body);

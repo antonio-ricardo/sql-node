@@ -30,8 +30,6 @@ export default {
   },
 
   async deleteUser(req: BaseRequest<BaseUserDto>, res: Response) {
-    validateEmail(req.body.email, res.locals?.email);
-    
     await deleteUserService(req.body);
 
     const { body, status } = SuccessNoContentResponse.create();
