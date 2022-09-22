@@ -8,7 +8,11 @@ export const validateToken = (req: any, res: Response, next: NextFunction) => {
       throw new UnauthorizedError("Invalid token");
     }
 
-    const [_, token] = req.headers.authorization.split(" ");
+    const [prefix, token] = req.headers.authorization.split(" ");
+
+    if (prefix != "Bearer") {
+      throw new UnauthorizedError("Invalid token");
+    }
 
     const verifiedToken = verify(
       token,
