@@ -1,13 +1,9 @@
 import { prisma } from './../../database/connection';
 import { UpdateUserDto } from '../../dto';
-import { ConflictError, NotFoundError } from '../../common/errors';
+import { NotFoundError } from '../../common/errors';
 import { hash } from 'bcrypt';
 
 export const updateUserService = async (input: UpdateUserDto) => {
-  if (!input.toUpdate.name && input.toUpdate.hasDeleted == undefined) {
-    throw new ConflictError('Any data sent to update the user');
-  }
-
   const userExists = await prisma.user.findFirst({
     where: { email: input.email },
   });
@@ -24,7 +20,7 @@ export const updateUserService = async (input: UpdateUserDto) => {
     where: {
       email: input.email,
     },
-    data: input.toUpdate,
+    data: { ...input.toUpdate, updated_at: new Date() },
   });
 
   return user;

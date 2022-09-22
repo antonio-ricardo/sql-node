@@ -7,10 +7,10 @@ export const validateRequest = (
   dto: any
 ) => {
   req.body = {
-    ...req.body,
-    ...req.headers,
-    ...req.params,
     ...req.query,
+    ...req.params,
+    ...req.headers,
+    ...req.body,
     ...res.locals,
   };
 

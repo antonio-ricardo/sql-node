@@ -9,6 +9,7 @@ export const deleteUserService = async (input: BaseUserDto) => {
     },
     data: {
       hasDeleted: true,
+      updated_at: new Date(),
     },
   });
 
