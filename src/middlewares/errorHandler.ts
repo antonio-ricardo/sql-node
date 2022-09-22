@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { ValidationError } from "yup";
+import { NextFunction, Request, Response } from 'express';
+import { ValidationError } from 'yup';
 
 export const errorHandler = (
   err: Error,
@@ -22,13 +22,13 @@ export const errorHandler = (
 
 const getErrorResponse = (err: Error) => {
   switch (err.name) {
-    case "ConflictError":
+    case 'ConflictError':
       return { message: err.message, status: 409 };
-    case "NotFoundError":
+    case 'NotFoundError':
       return { message: err.message, status: 404 };
-    case "BadRequestError":
+    case 'BadRequestError':
       return { message: err.message, status: 400 };
-    case "UnauthorizedError":
+    case 'UnauthorizedError':
       return { message: err.message, status: 401 };
     default:
       return { message: err.message, status: 500 };

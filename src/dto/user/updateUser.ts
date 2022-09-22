@@ -1,4 +1,4 @@
-import { boolean, object, string } from "yup";
+import { boolean, object, string } from 'yup';
 
 const updateUserSchema = object({
   name: string(),

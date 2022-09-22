@@ -1,6 +1,6 @@
-import { prisma } from "./../../database/connection";
-import { BaseUserDto } from "../../dto";
-import { NotFoundError } from "../../common/errors";
+import { prisma } from './../../database/connection';
+import { BaseUserDto } from '../../dto';
+import { NotFoundError } from '../../common/errors';
 
 export const getUserService = async (input: BaseUserDto) => {
   const user = await prisma.user.findFirst({
@@ -10,7 +10,7 @@ export const getUserService = async (input: BaseUserDto) => {
   });
 
   if (!user) {
-    throw new NotFoundError("Not find any user with sent email");
+    throw new NotFoundError('Not find any user with sent email');
   }
 
   return user;

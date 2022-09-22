@@ -1,11 +1,11 @@
-import { prisma } from "./../../database/connection";
-import { UpdateUserDto } from "../../dto";
-import { ConflictError, NotFoundError } from "../../common/errors";
-import { hash } from "bcrypt";
+import { prisma } from './../../database/connection';
+import { UpdateUserDto } from '../../dto';
+import { ConflictError, NotFoundError } from '../../common/errors';
+import { hash } from 'bcrypt';
 
 export const updateUserService = async (input: UpdateUserDto) => {
   if (!input.toUpdate.name && input.toUpdate.hasDeleted == undefined) {
-    throw new ConflictError("Any data sent to update the user");
+    throw new ConflictError('Any data sent to update the user');
   }
 
   const userExists = await prisma.user.findFirst({
@@ -13,7 +13,7 @@ export const updateUserService = async (input: UpdateUserDto) => {
   });
 
   if (!userExists) {
-    throw new NotFoundError("Not find any user with sent email");
+    throw new NotFoundError('Not find any user with sent email');
   }
 
   if (input.toUpdate.password) {

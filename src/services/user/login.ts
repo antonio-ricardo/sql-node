@@ -1,7 +1,7 @@
-import { compare } from "bcrypt";
-import { sign } from "jsonwebtoken";
-import { BadRequestError } from "../../common/errors/badRequest";
-import { prisma } from "./../../database/connection";
+import { compare } from 'bcrypt';
+import { sign } from 'jsonwebtoken';
+import { BadRequestError } from '../../common/errors/badRequest';
+import { prisma } from './../../database/connection';
 
 interface Input {
   email: string;
@@ -16,18 +16,18 @@ export const userLoginService = async (input: Input) => {
   });
 
   if (!user) {
-    throw new BadRequestError("Invalid email or password");
+    throw new BadRequestError('Invalid email or password');
   }
 
   const passwordIsValid = await compare(input.password, user.password);
 
   if (!passwordIsValid) {
-    throw new BadRequestError("Invalid email or password");
+    throw new BadRequestError('Invalid email or password');
   }
 
-  const token = sign({}, process.env.PRIVATE_KEY || "private-toin-key", {
+  const token = sign({}, process.env.PRIVATE_KEY || 'private-toin-key', {
     subject: user.email,
-    expiresIn: 20
+    expiresIn: 20,
   });
 
   return { token };

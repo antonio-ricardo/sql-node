@@ -1,4 +1,4 @@
-import { object, string } from "yup";
+import { object, string } from 'yup';
 
 const createUserSchema = object({
   name: string().required(),

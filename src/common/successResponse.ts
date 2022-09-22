@@ -1,4 +1,4 @@
-import { BaseResponse } from "./baseResponse";
+import { BaseResponse } from './baseResponse';
 
 export class SuccessResponse {
   static create(body: unknown): BaseResponse {

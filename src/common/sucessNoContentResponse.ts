@@ -1,9 +1,9 @@
-import { BaseResponse } from "./baseResponse";
+import { BaseResponse } from './baseResponse';
 
 export class SuccessNoContentResponse {
   static create(): BaseResponse {
     return {
-      body: { message: "success" },
+      body: { message: 'success' },
       status: 204,
     };
   }

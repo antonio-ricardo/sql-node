@@ -1,16 +1,15 @@
-import { SuccessNoContentResponse } from "./../common/sucessNoContentResponse";
-import { BaseRequest } from "./../common/baseRequest";
-import { SuccessResponse } from "./../common/successResponse";
-import { Response } from "express";
+import { SuccessNoContentResponse } from './../common/sucessNoContentResponse';
+import { BaseRequest } from './../common/baseRequest';
+import { SuccessResponse } from './../common/successResponse';
+import { Response } from 'express';
 import {
   createUserService,
   deleteUserService,
   updateUserService,
   getUserService,
   userLoginService,
-} from "../services";
-import { BaseUserDto, CreateUserDto, LogUserDto, UpdateUserDto } from "../dto";
-import { validateEmail } from "../helpers/validateEmail";
+} from '../services';
+import { BaseUserDto, CreateUserDto, LogUserDto, UpdateUserDto } from '../dto';
 
 export default {
   async createUser(req: BaseRequest<CreateUserDto>, res: Response) {

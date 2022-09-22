@@ -3,16 +3,16 @@ import {
   BaseUserDto,
   UpdateUserDto,
   LogUserDto,
-} from "./../dto";
-import { Router } from "express";
-import userControllers from "../controllers/user";
-import { validateRequest } from "../middlewares/validateRequest";
-import { validateToken } from "../middlewares/validateToken";
+} from './../dto';
+import { Router } from 'express';
+import userControllers from '../controllers/user';
+import { validateRequest } from '../middlewares/validateRequest';
+import { validateToken } from '../middlewares/validateToken';
 
 const routes = Router();
 
 routes.post(
-  "/",
+  '/',
   (req, res, next) => {
     validateRequest(req, res, next, CreateUserDto);
   },
@@ -20,7 +20,7 @@ routes.post(
 );
 
 routes.get(
-  "/",
+  '/',
   (req, res, next) => {
     validateRequest(req, res, next, BaseUserDto);
   },
@@ -28,7 +28,7 @@ routes.get(
 );
 
 routes.delete(
-  "/",
+  '/',
   (req, res, next) => {
     validateToken(req, res, next);
   },
@@ -39,7 +39,7 @@ routes.delete(
 );
 
 routes.put(
-  "/",
+  '/',
   (req, res, next) => {
     validateToken(req, res, next);
   },
@@ -50,7 +50,7 @@ routes.put(
 );
 
 routes.post(
-  "/login",
+  '/login',
   (req, res, next) => {
     validateRequest(req, res, next, LogUserDto);
   },
