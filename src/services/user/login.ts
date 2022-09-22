@@ -8,7 +8,7 @@ interface Input {
   password: string;
 }
 
-export const userLoginService = async (input: Input) => {
+export const authenticateUserService = async (input: Input) => {
   const user = await prisma.user.findFirst({
     where: {
       email: input.email,

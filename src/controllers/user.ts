@@ -7,9 +7,14 @@ import {
   deleteUserService,
   updateUserService,
   getUserService,
-  userLoginService,
+  authenticateUserService,
 } from '../services';
-import { BaseUserDto, CreateUserDto, LogUserDto, UpdateUserDto } from '../dto';
+import {
+  BaseUserDto,
+  CreateUserDto,
+  authenticateUserDto,
+  UpdateUserDto,
+} from '../dto';
 
 export default {
   async createUser(req: BaseRequest<CreateUserDto>, res: Response) {
@@ -44,8 +49,8 @@ export default {
     return res.status(status).json(body);
   },
 
-  async logUser(req: BaseRequest<LogUserDto>, res: Response) {
-    const token = await userLoginService(req.body);
+  async authenticateUser(req: BaseRequest<authenticateUserDto>, res: Response) {
+    const token = await authenticateUserService(req.body);
 
     const { body, status } = SuccessResponse.create(token);
 

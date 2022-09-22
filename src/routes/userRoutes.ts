@@ -2,7 +2,7 @@ import {
   CreateUserDto,
   BaseUserDto,
   UpdateUserDto,
-  LogUserDto,
+  authenticateUserDto,
 } from './../dto';
 import { Router } from 'express';
 import userControllers from '../controllers/user';
@@ -52,9 +52,9 @@ routes.put(
 routes.post(
   '/login',
   (req, res, next) => {
-    validateRequest(req, res, next, LogUserDto);
+    validateRequest(req, res, next, authenticateUserDto);
   },
-  userControllers.logUser
+  userControllers.authenticateUser
 );
 
 export default routes;

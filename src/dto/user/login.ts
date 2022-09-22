@@ -1,6 +1,6 @@
 import { object, string } from 'yup';
 
-const logUserSchema = object({
+const authenticateUserSchema = object({
   email: string().required(),
   password: string().required(),
 });
@@ -10,14 +10,14 @@ interface UserData {
   password: string;
 }
 
-export class LogUserDto {
+export class authenticateUserDto {
   constructor(public email: string, public password: string) {}
 
   static validate(data: Partial<UserData>) {
-    const { email, password } = logUserSchema
+    const { email, password } = authenticateUserSchema
       .camelCase()
       .validateSync(data, { stripUnknown: true });
 
-    return new LogUserDto(email, password);
+    return new authenticateUserDto(email, password);
   }
 }
