@@ -7,12 +7,6 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-enum TransactionType {
-  withdraw
-  deposit
-  transfer
-}
-
 model User {
   id               Int           @id @default(autoincrement())
   email            String        @unique
@@ -29,14 +23,15 @@ model User {
 }
 
 model Transaction {
-  id         Int             @id @default(autoincrement())
-  type       TransactionType
-  user       User            @relation("user", fields: [userId], references: [id])
-  userId     Int
-  receiver   User?           @relation("receiver", fields: [receiverId], references: [id])
-  receiverId Int?
-  created_at DateTime        @default(now())
-  updated_at DateTime        @default(now())
+  id            Int             @id @default(autoincrement())
+  type          String
+  value         Int
+  user          User            @relation("user", fields: [userEmail], references: [email])
+  userEmail     String
+  receiver      User?           @relation("receiver", fields: [receiverEmail], references: [email])
+  receiverEmail String?
+  created_at    DateTime        @default(now())
+  updated_at    DateTime        @default(now())
 
   @@map("Transactions")
 }
