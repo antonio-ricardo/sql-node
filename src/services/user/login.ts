@@ -16,13 +16,13 @@ export const userLoginService = async (input: Input) => {
   });
 
   if (!user) {
-    throw new BadRequestError("Invalid user or password");
+    throw new BadRequestError("Invalid email or password");
   }
 
   const passwordIsValid = await compare(input.password, user.password);
 
   if (!passwordIsValid) {
-    throw new BadRequestError("Invalid user or password");
+    throw new BadRequestError("Invalid email or password");
   }
 
   const token = sign({}, process.env.PRIVATE_KEY || "private-toin-key", {
