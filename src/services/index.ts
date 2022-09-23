@@ -3,3 +3,7 @@ export * from './user/delete';
 export * from './user/get';
 export * from './user/update';
 export * from './user/login';
+export * from './user/updateBalance';
+
+export * from './transaction/create';
+export * from './transaction/get';

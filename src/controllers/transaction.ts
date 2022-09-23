@@ -1,10 +1,11 @@
-import { CreateTransactionDto } from './../dto';
+import { CreateTransactionDto, GetUserTransactionsDto } from './../dto';
 import { BaseRequest } from '../common/baseRequest';
 import { SuccessResponse } from '../common/successResponse';
-import { createTransactionService } from '../services/transaction/create';
+import {
+  createTransactionService,
+  getUserTransactionsService,
+} from '../services';
 import { Response } from 'express';
-import { GetUserTransactionsDto } from '../dto/transaction/get';
-import { getUserTransactionsService } from '../services/transaction/get';
 
 export default {
   async createTransaction(
