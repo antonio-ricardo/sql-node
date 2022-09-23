@@ -1,9 +1,8 @@
 import { Router } from 'express';
-import { CreateTransactionDto } from '../dto';
+import { BaseDto, CreateTransactionDto, GetUserTransactionsDto } from '../dto';
 import { validateRequest } from '../middlewares/validateRequest';
 import { validateToken } from '../middlewares/validateToken';
 import transactionControllers from '../controllers/transaction';
-import { GetUserTransactionsDto } from '../dto/transaction/get';
 
 const routes = Router();
 
@@ -19,6 +18,13 @@ routes.get(
   (req, res, next) => validateToken(req, res, next),
   (req, res, next) => validateRequest(req, res, next, GetUserTransactionsDto),
   transactionControllers.getUserTransactions
+);
+
+routes.get(
+  '/balance',
+  (req, res, next) => validateToken(req, res, next),
+  (req, res, next) => validateRequest(req, res, next, BaseDto),
+  transactionControllers.getBalance
 );
 
 export default routes;
