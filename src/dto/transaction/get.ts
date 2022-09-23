@@ -1,7 +1,7 @@
 import { object, string } from 'yup';
 
 const getUserTransactionsSchema = object({
-  type: string().oneOf(['WITHDRAW', 'DEPOSIT']),
+  type: string().oneOf(['WITHDRAW', 'DEPOSIT', 'TRANSFER']),
   email: string().required(),
 });
 

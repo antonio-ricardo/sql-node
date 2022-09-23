@@ -7,15 +7,17 @@ export const getUserTransactionsService = async (
   if (input.type) {
     return await prisma.transaction.findMany({
       where: {
-        userEmail: input.email,
-        type: input.type,
+        OR: [
+          { userEmail: input.email, type: input.type },
+          { receiverEmail: input.email, type: input.type },
+        ],
       },
     });
   }
 
   return await prisma.transaction.findMany({
     where: {
-      userEmail: input.email,
+      OR: [{ userEmail: input.email }, { receiverEmail: input.email }],
     },
   });
 };
