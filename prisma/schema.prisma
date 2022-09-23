@@ -8,30 +8,29 @@ datasource db {
 }
 
 model User {
-  id               Int           @id @default(autoincrement())
-  email            String        @unique
-  password         String
-  name             String
-  hasDeleted       Boolean       @default(false)
-  balance          Int           @default(0)
-  userTransactions Transaction[] @relation("user")
-  transfers        Transaction[] @relation("receiver")
-  created_at       DateTime      @default(now())
-  updated_at       DateTime      @default(now())
+  id                       Int           @id @default(autoincrement())
+  email                    String        @unique
+  password                 String
+  name                     String
+  hasDeleted               Boolean       @default(false)
+  balance                  Int           @default(0)
+  lastTransactionIdChecked Int           @default(0)
+  Transactions             Transaction[] @relation("user")
+  created_at               DateTime      @default(now())
+  updated_at               DateTime      @default(now())
 
   @@map("Users")
 }
 
 model Transaction {
-  id            Int             @id @default(autoincrement())
+  id            Int      @id @default(autoincrement())
   type          String
   value         Int
-  user          User            @relation("user", fields: [userEmail], references: [email])
+  user          User     @relation("user", fields: [userEmail], references: [email])
   userEmail     String
-  receiver      User?           @relation("receiver", fields: [receiverEmail], references: [email])
   receiverEmail String?
-  created_at    DateTime        @default(now())
-  updated_at    DateTime        @default(now())
+  created_at    DateTime @default(now())
+  updated_at    DateTime @default(now())
 
   @@map("Transactions")
 }
