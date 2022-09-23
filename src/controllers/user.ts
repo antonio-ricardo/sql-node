@@ -10,7 +10,7 @@ import {
   authenticateUserService,
 } from '../services';
 import {
-  BaseUserDto,
+  BaseDto,
   CreateUserDto,
   authenticateUserDto,
   UpdateUserDto,
@@ -25,7 +25,7 @@ export default {
     return res.status(status).json(body);
   },
 
-  async getUser(req: BaseRequest<BaseUserDto>, res: Response) {
+  async getUser(req: BaseRequest<BaseDto>, res: Response) {
     const user = await getUserService(req.body);
 
     const { body, status } = SuccessResponse.create(user);
@@ -33,7 +33,7 @@ export default {
     return res.status(status).json(body);
   },
 
-  async deleteUser(req: BaseRequest<BaseUserDto>, res: Response) {
+  async deleteUser(req: BaseRequest<BaseDto>, res: Response) {
     await deleteUserService(req.body);
 
     const { body, status } = SuccessNoContentResponse.create();

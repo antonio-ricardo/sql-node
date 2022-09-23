@@ -1,8 +1,8 @@
 import { NotFoundError } from '../../common/errors';
-import { BaseUserDto } from '../../dto';
+import { BaseDto } from '../../dto';
 import { prisma } from './../../database/connection';
 
-export const deleteUserService = async (input: BaseUserDto) => {
+export const deleteUserService = async (input: BaseDto) => {
   const deletedUser = await prisma.user.update({
     where: {
       email: input.email,

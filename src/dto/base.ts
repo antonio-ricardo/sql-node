@@ -1,21 +1,21 @@
 import { object, string } from 'yup';
 
-const baseUserSchema = object({
+const baseSchema = object({
   email: string().required(),
 });
 
-interface UserData {
+interface Data {
   email: string;
 }
 
-export class BaseUserDto {
+export class BaseDto {
   constructor(public email: string) {}
 
-  static validate(data: Partial<UserData>) {
-    const { email } = baseUserSchema
+  static validate(data: Partial<Data>) {
+    const { email } = baseSchema
       .camelCase()
       .validateSync(data, { stripUnknown: true });
 
-    return new BaseUserDto(email);
+    return new BaseDto(email);
   }
 }

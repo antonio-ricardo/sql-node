@@ -1,6 +1,6 @@
 import {
   CreateUserDto,
-  BaseUserDto,
+  BaseDto,
   UpdateUserDto,
   authenticateUserDto,
 } from './../dto';
@@ -19,14 +19,14 @@ routes.post(
 
 routes.get(
   '/',
-  (req, res, next) => validateRequest(req, res, next, BaseUserDto),
+  (req, res, next) => validateRequest(req, res, next, BaseDto),
   userControllers.getUser
 );
 
 routes.delete(
   '/',
   (req, res, next) => validateToken(req, res, next),
-  (req, res, next) => validateRequest(req, res, next, BaseUserDto),
+  (req, res, next) => validateRequest(req, res, next, BaseDto),
   userControllers.deleteUser
 );
 
