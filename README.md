@@ -17,7 +17,7 @@ Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Pos
 
 # Como rodar o projeto
 
-- instale as dependencias (yarn)
+- instale as dependências (yarn)
 
 - inicie o container do docker (docker-compose up --build)
 
