@@ -8,8 +8,8 @@ export const getUserTransactionsService = async (
     return await prisma.transaction.findMany({
       where: {
         OR: [
-          { userEmail: input.email, type: input.type },
-          { receiverEmail: input.email, type: input.type },
+          { userEmail: input.email, type: { in: input.type } },
+          { receiverEmail: input.email, type: { in: input.type } },
         ],
       },
     });

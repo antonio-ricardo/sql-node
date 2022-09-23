@@ -27,7 +27,7 @@ export const authenticateUserService = async (input: Input) => {
 
   const token = sign({}, process.env.PRIVATE_KEY || 'private-toin-key', {
     subject: user.email,
-    expiresIn: 20,
+    expiresIn: 200,
   });
 
   return { token };
