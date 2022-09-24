@@ -50,11 +50,13 @@ Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Pos
 
 - json2csv
 
-- bull
+- bull (implementar a fila)
+
+- dotenv
 
 - yup (validação de requisição)
 
-- express e express-async-errors (para consiguir lidar com erros assincronos)
+- express e express-async-errors (para conseguir lidar com erros assíncronos)
 
 - husky e lint-staged (hook de pre-commit)
 
