@@ -1,5 +1,5 @@
-import { prisma } from './../../database/connection';
-import { GetUserTransactionsDto } from '../../dto/transaction/get';
+import { prisma } from '../../database/connection';
+import { GetUserTransactionsDto } from '../../dto/transaction/getTransactions';
 
 export const getUserTransactionsService = async (
   input: GetUserTransactionsDto

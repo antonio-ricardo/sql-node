@@ -1,5 +1,10 @@
 import { Router } from 'express';
-import { BaseDto, CreateTransactionDto, GetUserTransactionsDto } from '../dto';
+import {
+  BaseDto,
+  CreateTransactionDto,
+  GetUserTransactionDto,
+  GetUserTransactionsDto,
+} from '../dto';
 import { validateRequest } from '../middlewares/validateRequest';
 import { validateToken } from '../middlewares/validateToken';
 import transactionControllers from '../controllers/transaction';
@@ -17,6 +22,13 @@ routes.get(
   '/',
   (req, res, next) => validateToken(req, res, next),
   (req, res, next) => validateRequest(req, res, next, GetUserTransactionsDto),
+  transactionControllers.getUserTransactions
+);
+
+routes.get(
+  '/:id',
+  (req, res, next) => validateToken(req, res, next),
+  (req, res, next) => validateRequest(req, res, next, GetUserTransactionDto),
   transactionControllers.getUserTransactions
 );
 
