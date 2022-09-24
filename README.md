@@ -15,6 +15,11 @@ Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Pos
 
 - PRIVATE_KEY (chave privada que sera usada como segredo do jwt)
 
+- SECRET_EMAIL (email usado para ser o remetente de emails da aplicação)
+
+- SECRET_PASSWORD (senha do email, obs: vá nas configurações de contas do google e lá tem a opção de criar senhas para outros apps, essa é a senha que deve ser posta aqui)
+
+
 # Como rodar o projeto
 
 - instale as dependências (yarn)

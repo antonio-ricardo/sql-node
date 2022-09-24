@@ -7,3 +7,4 @@ export * from './user/login';
 export * from './transaction/create';
 export * from './transaction/getTransactions';
 export * from './transaction/getTransaction';
+export * from './transaction/exportTransaction';

@@ -8,3 +8,4 @@ export * from './user/updateBalance';
 export * from './transaction/create/create';
 export * from './transaction/getTransactions';
 export * from './transaction/getTransaction';
+export * from './transaction/exportUserTransactions';

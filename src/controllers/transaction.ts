@@ -1,6 +1,7 @@
 import {
   BaseDto,
   CreateTransactionDto,
+  ExportUserTransactionsDto,
   GetUserTransactionDto,
   GetUserTransactionsDto,
 } from './../dto';
@@ -11,8 +12,10 @@ import {
   getUserTransactionService,
   getUserTransactionsService,
   updateUserBalanceAndGetUserService,
+  exportUserTransactionsService,
 } from '../services';
 import { Response } from 'express';
+import { SuccessNoContentResponse } from '../common/sucessNoContentResponse';
 
 export default {
   async createTransaction(
@@ -52,6 +55,17 @@ export default {
     const transaction = await getUserTransactionService(req.body);
 
     const { body, status } = SuccessResponse.create(transaction);
+
+    return res.status(status).json(body);
+  },
+
+  async exportUserTransaction(
+    req: BaseRequest<ExportUserTransactionsDto>,
+    res: Response
+  ) {
+    await exportUserTransactionsService(req.body);
+
+    const { body, status } = SuccessNoContentResponse.create();
 
     return res.status(status).json(body);
   },

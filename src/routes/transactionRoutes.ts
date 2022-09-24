@@ -2,6 +2,7 @@ import { Router } from 'express';
 import {
   BaseDto,
   CreateTransactionDto,
+  ExportUserTransactionsDto,
   GetUserTransactionDto,
   GetUserTransactionsDto,
 } from '../dto';
@@ -37,6 +38,14 @@ routes.get(
   (req, res, next) => validateToken(req, res, next),
   (req, res, next) => validateRequest(req, res, next, BaseDto),
   transactionControllers.getBalance
+);
+
+routes.post(
+  '/export',
+  (req, res, next) => validateToken(req, res, next),
+  (req, res, next) =>
+    validateRequest(req, res, next, ExportUserTransactionsDto),
+  transactionControllers.exportUserTransaction
 );
 
 export default routes;
