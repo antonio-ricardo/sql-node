@@ -1,7 +1,7 @@
-# sql-node
+# sql-node 🚀
 Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Postgres rodando via docker com adminer)
 
-# Variáveis de ambiente
+# Variáveis de ambiente 🚀
 
 - PORT (Porta onde vai rodar o projeto. padrão: 3000)
 
@@ -20,7 +20,7 @@ Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Pos
 - SECRET_PASSWORD (senha do email, obs: vá nas configurações de contas do google e lá tem a opção de criar senhas para outros apps, essa é a senha que deve ser posta aqui)
 
 
-# Como rodar o projeto
+# Como rodar o projeto 🚀
 
 - instale as dependências (yarn)
 
@@ -29,3 +29,33 @@ Repositorio para o estudo basico de banco sql, prisma e mais umas coisinhas (Pos
 - rode as migrações do prisma (npx prisma migrate dev)
 
 - rode o projeto (yarn dev)
+
+# Principais tecnologias (libs, ferramentas e etc) 🚀
+
+- Redis
+
+- Postgres
+
+- Prisma
+
+- Docker
+
+- Javascript e Typescript
+
+- Autenticação JWT
+
+- bcrypt
+
+- nodemailer (envio de email)
+
+- json2csv
+
+- bull
+
+- yup (validação de requisição)
+
+- express e express-async-errors (para consiguir lidar com erros assincronos)
+
+- husky e lint-staged (hook de pre-commit)
+
+- prettier e eslint (formatação e organização do codigo)
