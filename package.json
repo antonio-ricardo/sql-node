@@ -38,7 +38,7 @@
   },
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts -e ts",
-    "build": "yarn & tsc",
+    "build": "yarn & tsc & npx prisma migrate dev",
     "start": "node dist/src/server.js"
   },
   "husky": {
