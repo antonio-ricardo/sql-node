@@ -11,6 +11,10 @@ export const createTransferTransaction = async (
     throw new BadRequestError('Receiver email is required to make a transfer');
   }
 
+  if (input.receiverEmail === input.email) {
+    throw new ConflictError('Make a transfer for yourself is not possible');
+  }
+
   const user = await updateUserBalanceAndGetUserService(input.email);
 
   if (user.balance < input.toCreate.value) {
