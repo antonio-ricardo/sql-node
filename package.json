@@ -25,7 +25,6 @@
     "@types/node": "^18.7.8",
     "@types/nodemailer": "^6.4.6",
     "@types/prettier": "^2.7.0",
-    "@types/yup": "^0.32.0",
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "eslint": "^8.23.1",
@@ -40,7 +39,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts -e ts",
     "build": "yarn tsc",
-    "start": "node /src/dist/server.js"
+    "start": "node dist/server.js"
   },
   "husky": {
     "hooks": {
