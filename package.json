@@ -39,7 +39,7 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server.ts -e ts",
     "build": "yarn tsc",
-    "start": "node ../dist/server.js"
+    "start": "node ./src/server"
   },
   "husky": {
     "hooks": {
