@@ -43,6 +43,7 @@ export const updateUserBalanceAndGetUserService = async (email: string) => {
       balance,
       lastTransactionIdChecked:
         userTransactions[userTransactions.length - 1].id,
+      updated_at: new Date(),
     },
   });
 
