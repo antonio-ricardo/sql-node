@@ -25,5 +25,12 @@ export const authenticateUserService = async (input: Input) => {
     throw new BadRequestError('Invalid email or password');
   }
 
-  return await makeTokensWithEmail(user.email);
+  const { refreshToken, acessToken } = await makeTokensWithEmail(user.email);
+
+  await prisma.user.update({
+    where: { email: user.email },
+    data: { refreshToken, updated_at: new Date() },
+  });
+
+  return { refreshToken, acessToken };
 };

@@ -1,5 +1,4 @@
 import { sign } from 'jsonwebtoken';
-import { prisma } from './../database/connection';
 
 export const makeTokensWithEmail = async (email: string) => {
   const acessToken = sign({}, process.env.PRIVATE_KEY || 'private-toin-key', {
@@ -15,11 +14,6 @@ export const makeTokensWithEmail = async (email: string) => {
       expiresIn: '1d',
     }
   );
-
-  await prisma.user.update({
-    where: { email: email },
-    data: { refreshToken, updated_at: new Date() },
-  });
 
   return { acessToken, refreshToken };
 };
