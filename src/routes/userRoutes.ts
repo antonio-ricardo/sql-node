@@ -3,6 +3,7 @@ import {
   BaseDto,
   UpdateUserDto,
   authenticateUserDto,
+  refreshTokenDto,
 } from './../dto';
 import { Router } from 'express';
 import userControllers from '../controllers/user';
@@ -41,6 +42,12 @@ routes.post(
   '/login',
   (req, res, next) => validateRequest(req, res, next, authenticateUserDto),
   userControllers.authenticateUser
+);
+
+routes.post(
+  '/refresh',
+  (req, res, next) => validateRequest(req, res, next, refreshTokenDto),
+  userControllers.refreshToken
 );
 
 export default routes;

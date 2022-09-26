@@ -1,6 +1,6 @@
 import { compare } from 'bcrypt';
-import { sign } from 'jsonwebtoken';
 import { BadRequestError } from '../../common/errors/badRequest';
+import { makeTokensWithEmail } from '../../helpers/makeTokensWithEmail';
 import { prisma } from './../../database/connection';
 
 interface Input {
@@ -25,10 +25,5 @@ export const authenticateUserService = async (input: Input) => {
     throw new BadRequestError('Invalid email or password');
   }
 
-  const token = sign({}, process.env.PRIVATE_KEY || 'private-toin-key', {
-    subject: user.email,
-    expiresIn: 200,
-  });
-
-  return { token };
+  return await makeTokensWithEmail(user.email);
 };

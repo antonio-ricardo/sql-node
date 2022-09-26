@@ -8,12 +8,14 @@ import {
   updateUserService,
   getUserService,
   authenticateUserService,
+  refreshUserTokenService,
 } from '../services';
 import {
   BaseDto,
   CreateUserDto,
   authenticateUserDto,
   UpdateUserDto,
+  refreshTokenDto,
 } from '../dto';
 
 export default {
@@ -50,9 +52,27 @@ export default {
   },
 
   async authenticateUser(req: BaseRequest<authenticateUserDto>, res: Response) {
-    const token = await authenticateUserService(req.body);
+    const { acessToken, refreshToken } = await authenticateUserService(
+      req.body
+    );
 
-    const { body, status } = SuccessResponse.create(token);
+    const { body, status } = SuccessResponse.create({
+      acessToken,
+      refreshToken,
+    });
+
+    return res.status(status).json(body);
+  },
+
+  async refreshToken(req: BaseRequest<refreshTokenDto>, res: Response) {
+    const { acessToken, refreshToken } = await refreshUserTokenService(
+      req.body
+    );
+
+    const { body, status } = SuccessResponse.create({
+      acessToken,
+      refreshToken,
+    });
 
     return res.status(status).json(body);
   },

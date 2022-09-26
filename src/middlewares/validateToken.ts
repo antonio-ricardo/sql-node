@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from 'express';
-import { verify } from 'jsonwebtoken';
+import { NextFunction, Response } from 'express';
+import { JwtPayload, verify } from 'jsonwebtoken';
 import { UnauthorizedError } from '../common/errors/unauthorized';
 
 export const validateToken = (req: any, res: Response, next: NextFunction) => {
@@ -17,7 +17,7 @@ export const validateToken = (req: any, res: Response, next: NextFunction) => {
     const verifiedToken = verify(
       token,
       process.env.PRIVATE_KEY || 'private-toin-key'
-    );
+    ) as JwtPayload;
 
     res.locals.email = verifiedToken.sub;
 

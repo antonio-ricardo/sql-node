@@ -14,6 +14,7 @@ model User {
   name                     String
   hasDeleted               Boolean       @default(false)
   balance                  Int           @default(0)
+  refreshToken             String?
   lastTransactionIdChecked Int           @default(0)
   Transactions             Transaction[] @relation("user")
   created_at               DateTime      @default(now())
