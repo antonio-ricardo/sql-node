@@ -1,8 +1,20 @@
+import { NotFoundError } from '../../common/errors';
 import { prisma } from '../../database/connection';
-import { getUserService } from './get';
 
 export const updateUserBalanceAndGetUserService = async (email: string) => {
-  const user = await getUserService({ email });
+  const user = await prisma.user.findUnique({
+    where: {
+      email: email,
+    },
+    select: {
+      balance: true,
+      lastTransactionIdChecked: true,
+    },
+  });
+
+  if (!user) {
+    throw new NotFoundError('Not find any user with sent email');
+  }
 
   const userTransactions = await prisma.transaction.findMany({
     where: {

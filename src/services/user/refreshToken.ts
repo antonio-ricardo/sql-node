@@ -22,16 +22,11 @@ export const refreshUserTokenService = async (input: refreshTokenDto) => {
       where: { email: verifiedToken.sub },
     });
 
-    if (!user || user.refreshToken != input.refreshToken) {
+    if (!user) {
       throw new UnauthorizedError('invalid token');
     }
 
     const { refreshToken, acessToken } = await makeTokensWithEmail(user.email);
-
-    await prisma.user.update({
-      where: { email: user.email },
-      data: { refreshToken, updated_at: new Date() },
-    });
 
     return { acessToken, refreshToken };
   } catch (err) {
