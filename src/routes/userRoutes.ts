@@ -20,6 +20,7 @@ routes.post(
 
 routes.get(
   '/',
+  (req, res, next) => validateToken(req, res, next),
   (req, res, next) => validateRequest(req, res, next, BaseDto),
   userControllers.getUser
 );

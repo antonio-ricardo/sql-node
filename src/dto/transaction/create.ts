@@ -5,6 +5,8 @@ const createTransactionSchema = object({
   value: number().required().min(1),
   email: string().required(),
   receiverEmail: string(),
+  category: string(),
+  description: string(),
 });
 
 interface TransactionData {
@@ -17,6 +19,8 @@ interface TransactionData {
 interface ToCreate {
   type: string;
   value: number;
+  category?: string;
+  description?: string;
 }
 
 export class CreateTransactionDto {
@@ -27,10 +31,15 @@ export class CreateTransactionDto {
   ) {}
 
   static validate(data: Partial<TransactionData>) {
-    const { type, value, email, receiverEmail } = createTransactionSchema
-      .camelCase()
-      .validateSync(data, { stripUnknown: true });
+    const { type, value, email, receiverEmail, category, description } =
+      createTransactionSchema
+        .camelCase()
+        .validateSync(data, { stripUnknown: true });
 
-    return new CreateTransactionDto({ type, value }, email, receiverEmail);
+    return new CreateTransactionDto(
+      { type, value, category, description },
+      email,
+      receiverEmail
+    );
   }
 }

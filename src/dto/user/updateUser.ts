@@ -5,6 +5,7 @@ const updateUserSchema = object({
   email: string().required(),
   hasDeleted: boolean(),
   password: string(),
+  photoUrl: string(),
 });
 
 interface UserData {
@@ -12,22 +13,24 @@ interface UserData {
   email: string;
   password: string;
   hasDeleted: boolean;
+  photoUrl: string;
 }
 
 interface ToUpdate {
   name?: string;
   hasDeleted?: boolean;
   password?: string;
+  photoUrl?: string;
 }
 
 export class UpdateUserDto {
   constructor(public email: string, public toUpdate: ToUpdate) {}
 
   static validate(data: Partial<UserData>) {
-    const { email, hasDeleted, name, password } = updateUserSchema
+    const { email, hasDeleted, name, password, photoUrl } = updateUserSchema
       .camelCase()
       .validateSync(data, { stripUnknown: true });
 
-    return new UpdateUserDto(email, { name, hasDeleted, password });
+    return new UpdateUserDto(email, { name, hasDeleted, password, photoUrl });
   }
 }

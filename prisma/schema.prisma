@@ -12,9 +12,9 @@ model User {
   email                    String        @unique
   password                 String
   name                     String
+  photoUrl                 String?
   hasDeleted               Boolean       @default(false)
   balance                  Int           @default(0)
-  refreshToken             String?
   lastTransactionIdChecked Int           @default(0)
   Transactions             Transaction[] @relation("user")
   created_at               DateTime      @default(now())
@@ -26,6 +26,8 @@ model User {
 model Transaction {
   id            Int      @id @default(autoincrement())
   type          String
+  description   String?
+  category      String?
   value         Int
   user          User     @relation("user", fields: [userEmail], references: [email])
   userEmail     String
