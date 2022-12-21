@@ -20,8 +20,8 @@ export const createUserService = async (input: CreateUserDto) => {
   const { acessToken, refreshToken } = await makeTokensWithEmail(input.email);
 
   const createdUser = await prisma.user.create({
-    data: { ...input, password: hashedPassword, refreshToken },
+    data: { ...input, password: hashedPassword },
   });
 
-  return { ...createdUser, acessToken };
+  return { ...createdUser, acessToken, refreshToken };
 };
