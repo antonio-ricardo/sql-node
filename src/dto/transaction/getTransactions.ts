@@ -17,7 +17,7 @@ const getUserTransactionsSchema = object({
 
 interface TransactionData {
   email: string;
-  type: string;
+  types: string;
 }
 
 export class GetUserTransactionsDto {
@@ -26,8 +26,8 @@ export class GetUserTransactionsDto {
   static validate(data: Partial<TransactionData>) {
     let types;
 
-    if (data.type) {
-      types = data.type.split(',');
+    if (data.types) {
+      types = data.types.split(',');
     }
 
     const { type, email } = getUserTransactionsSchema

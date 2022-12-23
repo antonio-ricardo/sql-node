@@ -30,7 +30,7 @@ routes.get(
   '/:id',
   (req, res, next) => validateToken(req, res, next),
   (req, res, next) => validateRequest(req, res, next, GetUserTransactionDto),
-  transactionControllers.getUserTransactions
+  transactionControllers.getUserTransaction
 );
 
 routes.get(
